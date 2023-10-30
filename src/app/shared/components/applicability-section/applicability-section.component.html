@@ -1,0 +1,17 @@
+<section class='carousel-section' [style.backgroundImage]="'url(' + carouselItems[activeSlide]?.bgUrl + ')'">
+  <div class="menu-slider">
+    <div  
+      *ngFor="let menuItem of groups; let i = index" 
+      class="menu-item"
+      [class.active-item]="i === activeSection"
+      (click)="changeSection(i)">
+      <span class="menu-title">
+        {{menuItem.title}}
+      </span>
+    </div>
+  </div>
+  <div id="app">
+    <owner-carousel [carouselItems]="groups" [activeSlideChange]="activeSlide" (activeSectionToParent)="changeSection($event)" (activeSlideToParent)="changeSlide($event)"></owner-carousel>
+  </div>
+</section>
+

@@ -1,0 +1,157 @@
+.carousel-wrapper {
+    position: relative;
+    width: 100%;
+    .carousel-container {
+        position: relative;
+        max-width: 1280px;
+        width: 100%;
+        height: 480px;
+        margin: 0 auto;
+        overflow: hidden;
+        transform-style: preserve-3d;
+        perspective: 2000px;
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            z-index: 1;
+            display: block;        
+            width: calc(100% - 320px);
+            height: 100%;
+            border-radius: 8px;
+            margin: 0;
+            transform: translate3d(-50%,0,-401px);
+            transform-origin: center center;
+            transition: transform .5s 0s linear, z-index .5s 0s linear, opacity 0s;
+            &.next {
+                transform: translate3d(calc(-50% + 160px),0,-200px);
+                opacity: 1;
+                z-index: 3;
+                transform-origin: right center;
+            }
+            &.next-2 {
+                transform: translate3d(calc(-50% + 280px),0,-400px);
+                opacity: 1;
+                z-index: 2;
+                transform-origin: right center;
+            }
+            &.prev {
+                transform: translate3d(calc(-50% - 160px),0,-200px);
+                opacity: 1;
+                z-index: 3;
+                transform-origin: left center;
+            }
+            &.prev-2 {
+                transform: translate3d(calc(-50% - 280px),0,-400px);
+                opacity: 1;
+                z-index: 2;
+                transform-origin: left center;
+            }
+            &.active {
+                transform: translate3d(-50%,0,0);
+                opacity: 1;
+                z-index: 4;
+            }
+            .image {
+                display: inline-block;
+                margin-top: 37px;
+                height: 400px;
+            }
+            img {
+                width: 100%;
+                height: 100%;
+                display: block;
+                object-fit: cover;
+                border-radius: 8px;
+                pointer-events: none;
+            }
+            .swiper-carousel-animate-opacity {
+                background: linear-gradient(260deg, #2F313D -20.66%, #151720 103.61%);
+                border-radius: 20px;height:437px;
+                display: flex;
+            }
+            .slide-text-content {
+                width: 70%;
+                margin-top: 100px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                h2 {
+                    font-weight: 700;
+                    font-size: 32px;
+                    line-height: 52.503px;
+                }
+                p {
+                    color: rgba(239, 237, 253, 0.70);
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 29.088px;
+                }
+                .button-default{
+                    margin-top: auto;
+                    margin-bottom: 60px;
+                }
+            }
+        }
+    }
+    .carousel-paginator{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        .carousel-paginator-bullet {
+            display: block;
+            width: 11px;
+            height: 5px;
+            border-radius: 4px;
+            background: rgba(217, 217, 217, 0.2);
+            opacity: 1;
+            margin: 0 2.5px;
+            transition: width 0.25s ease-in-out;
+            cursor: pointer;
+            &.active {
+                width: 28px;
+                background: #A36DEA !important;
+            }
+        }
+    }
+}
+@media (max-width: 1279px) {
+    .carousel-wrapper {
+        .carousel-container {
+            .carousel-slide {
+                width: calc(100% - 120px);
+                &.next {
+                    transform: translate3d(calc(-50% + 100px),0,-200px);
+                }
+                &.next-2,&.prev-2 {
+                    transform: translate3d(-50%,0,-400px);
+                }
+                &.prev {
+                    transform: translate3d(calc(-50% - 100px),0,-200px);
+                }
+            }
+        }
+    }
+}
+/*
+@media (max-width: 768px) {
+    .carousel-wrapper {
+        .carousel-container {
+            .carousel-slide {
+                width: calc(100% - 20px);
+                &.next {
+                    transform: translate3d(calc(-50% + 10px),0,-200px);
+                }
+                &.prev {
+                    transform: translate3d(calc(-50% - 10px),0,-200px);
+                }
+            }
+        }
+    }
+}
+*/

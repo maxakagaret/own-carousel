@@ -1,0 +1,34 @@
+<div class="carousel-wrapper">
+  <div class="carousel-container" (touchstart)="swipe($event, 'start')" (touchend)="swipe($event, 'end')" (mousedown)="mouseswipe($event,'start')" (mouseup)="mouseswipe($event,'end')">
+      <div 
+          *ngFor="let slide of slidersSet; let i=index;"
+          class="carousel-slide"
+          [attr.data-index]="slide.id"
+          [class.active]="i===activeSlide"
+          [class.next]="i===activeSlide+1 || (i===0 && activeSlide===(slidersSet.length-1))"
+          [class.next-2]="i===activeSlide+2 || (i===0 && activeSlide===(slidersSet.length-2)) || (i===1 && activeSlide===(slidersSet.length-1))"
+          [class.prev]="i===activeSlide-1 || (i===(slidersSet.length-1) && activeSlide===0)"
+          [class.prev-2]="i===activeSlide-2 || (i===(slidersSet.length-2) && activeSlide===0) || (i===(slidersSet.length-1) && activeSlide===1)"
+      >
+          <div class="swiper-carousel-animate-opacity">
+              <div class="slide-text-content">
+                <h2>{{slide.title}}</h2>
+                <p *ngFor="let text of slide.texts">{{text}}</p>
+                <button class="button-default">
+                  Подробнее
+                </button>
+              </div>
+              <div class="image">
+                <img [src]="slide.img" alt="">
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="carousel-paginator">
+    <span  *ngFor="let page of [].constructor(sectionsSize[currentSection]); let i = index" (click)="paginate(i)"
+      class="carousel-paginator-bullet"
+      [attr.data-index]="i"
+      [class.active]="i === activePage">
+    </span>
+  </div>
+</div>

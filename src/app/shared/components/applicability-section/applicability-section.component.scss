@@ -1,0 +1,42 @@
+@import '/src/styles/variables';
+.fade-in {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+// Custom styles for demo
+:root {
+    --swiper-navigation-color: #fff;
+    --swiper-pagination-color: #fff;
+    --swiper-pagination-bullet-inactive-color: #fff;
+}
+section{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 100px 0;
+}
+
+.menu-slider{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin-bottom: 10px;
+    padding: 0 2%;
+}
+.menu-item{
+    border-radius: 20px;
+    cursor: pointer;
+    padding: 10px;
+    /* CSS Gradient */
+    background: linear-gradient(to right, rgba(229, 156, 255, 0.11) 0%, rgba(186, 156, 255, 0.09) 50%, rgba(156, 178, 255, 0.09) 100%);
+}
+.active-item{
+    transition: all 0.5s ease-in;
+    background: linear-gradient(to right, rgba(229, 156, 255, 0.37) 0%, rgba(186, 156, 255, 0.36) 50%, rgba(156, 178, 255, 0.34) 100%);
+}
