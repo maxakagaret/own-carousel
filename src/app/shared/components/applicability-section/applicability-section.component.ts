@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { BaseComponent } from '@core/classes/base-component';
-import {DATA} from './data';
+import { DATA } from './data';
 
 @Component({
     selector: 'owner-applicability-section',
@@ -33,7 +33,6 @@ export class ApplicabilitySectionComponent extends BaseComponent implements OnIn
             }
         }
     }
-    // Function to change the animation state
     private _toggleAnimation(): void {
         if(isPlatformBrowser(this._platformId)){
             if (typeof document !== 'undefined') {

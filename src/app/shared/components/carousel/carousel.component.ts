@@ -1,13 +1,22 @@
-import { ChangeDetectionStrategy, Component, OnInit, OnDestroy,Input, Output, EventEmitter } from '@angular/core';
-// import { DATA } from '../applicability-section/data';
+import {
+    Component,
+    Inject,
+    OnInit,
+    OnDestroy,
+    Input,
+    Output,
+    EventEmitter,
+    PLATFORM_ID
+} from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { BaseComponent } from '@core/classes/base-component';
 
 @Component({
   selector: 'owner-carousel',
   templateUrl: './carousel.component.html',
   styleUrls: ['./carousel.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CarouselComponent extends Component implements OnInit, OnDestroy {
+export class CarouselComponent extends BaseComponent implements OnInit, OnDestroy {
   @Input() public carouselItems: any= [];
   @Input() public set activeSlideChange(edit: number) {
     this._changeSlideTo(edit);
@@ -28,12 +37,17 @@ export class CarouselComponent extends Component implements OnInit, OnDestroy {
   public sectionsIndexes: any[]= [];
   public sectionsSize: any[]= [];  
 
+  public constructor(@Inject(PLATFORM_ID) private _platformId: string) {
+    super();
+  }
   private _autoPlay(): void {
-    if(this._autoPlayInterval) {
-      clearInterval(this._autoPlayInterval);
+    if(isPlatformBrowser(this._platformId)) {
+      if(this._autoPlayInterval) {
+        clearInterval(this._autoPlayInterval);
+      }
+  
+      this._autoPlayInterval =  setInterval( ()=> this._changeSlide(true), this._autoPlayDelay);
     }
-
-    this._autoPlayInterval =  setInterval( ()=> this._changeSlide(true), this._autoPlayDelay);
   }
   private _changeSlide(direction:boolean ):void {
     if(direction) {
@@ -77,7 +91,7 @@ export class CarouselComponent extends Component implements OnInit, OnDestroy {
         }
 
         this._changeSlideBlocker = false;
-        this._autoPlay();
+        // this._autoPlay();
       }
       else return;
   }
@@ -104,7 +118,7 @@ export class CarouselComponent extends Component implements OnInit, OnDestroy {
           texts:data[blockIndex].items[itemIndex].items,
           img:data[blockIndex].items[itemIndex].phoneImgUrl
         });
-        
+
         idx++;
       }
     }
@@ -112,7 +126,7 @@ export class CarouselComponent extends Component implements OnInit, OnDestroy {
     this._autoPlayDelay = 3000;
     this._autoPlay();
   }
-  public ngOnDestroy(): void {
+  public override ngOnDestroy(): void {
     if (this._autoPlayInterval) {
       clearInterval(this._autoPlayInterval);
     }
