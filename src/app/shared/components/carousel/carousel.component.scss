@@ -138,20 +138,3 @@
         }
     }
 }
-/*
-@media (max-width: 768px) {
-    .carousel-wrapper {
-        .carousel-container {
-            .carousel-slide {
-                width: calc(100% - 20px);
-                &.next {
-                    transform: translate3d(calc(-50% + 10px),0,-200px);
-                }
-                &.prev {
-                    transform: translate3d(calc(-50% - 10px),0,-200px);
-                }
-            }
-        }
-    }
-}
-*/
