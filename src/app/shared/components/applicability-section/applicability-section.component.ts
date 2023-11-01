@@ -42,7 +42,7 @@ export class ApplicabilitySectionComponent extends BaseComponent implements OnIn
             ];
 
             if(element){
-                element.animate(keyframes, 1000);
+                element.animate(keyframes, 500);
             }
         }
     }
