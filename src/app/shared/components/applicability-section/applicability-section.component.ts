@@ -34,17 +34,15 @@ export class ApplicabilitySectionComponent extends BaseComponent implements OnIn
         }
     }
     private _toggleAnimation(): void {
-        if(isPlatformBrowser(this._platformId)){
-            if (typeof document !== 'undefined') {
-                const element = document.querySelector('.carousel-section');
-                const keyframes = [
-                    { opacity: 0 },
-                    { opacity: 1 }
-                ];
+        if(isPlatformBrowser(this._platformId) && typeof document !== 'undefined') {
+            const element = document.querySelector('.carousel-section');
+            const keyframes = [
+                { opacity: 0 },
+                { opacity: 1 }
+            ];
 
-                if(element){
-                    element.animate(keyframes, 1000);
-                }
+            if(element){
+                element.animate(keyframes, 1000);
             }
         }
     }
