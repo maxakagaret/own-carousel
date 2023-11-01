@@ -20,13 +20,13 @@ export class ApplicabilitySectionComponent extends BaseComponent implements OnIn
     public carouselItems: any = [];
     public activeSection= 0;
     public activeSlide= 0;
-    public animationFlag= false;
 
     public constructor(@Inject(PLATFORM_ID) private _platformId: string) {
         super();
     }
     public ngOnInit(): void {
         this.activeSection= 0;
+
         for (let groupIndex= 0; groupIndex < this.groups.length; groupIndex++){   
             for (let j= 0; j < this.groups[groupIndex].items.length; j++) {                
                 this.carouselItems.push(this.groups[groupIndex].items[j]);
@@ -42,11 +42,11 @@ export class ApplicabilitySectionComponent extends BaseComponent implements OnIn
                     { opacity: 0 },
                     { opacity: 1 }
                 ];
+
                 if(element){
                     element.animate(keyframes, 1000);
                 }
             }
-            this.animationFlag = true;
         }
     }
     public changeSection(section: number): void {
@@ -54,9 +54,11 @@ export class ApplicabilitySectionComponent extends BaseComponent implements OnIn
             this._toggleAnimation();
            
             let slideToGo = 0;
+
             for (let sectionIndex= 1; sectionIndex <= section; sectionIndex++) {
                 slideToGo+= this.groups[sectionIndex-1].items.length;
             }
+            
             this.activeSection= section;
             this.activeSlide= slideToGo;
         }

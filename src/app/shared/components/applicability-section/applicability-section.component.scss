@@ -1,12 +1,4 @@
 @import '/src/styles/variables';
-.carousel-section {
-    opacity: 1;
-    transition: opacity 5s 0s linear;
-}
-.carousel-section.fade-out {
-    opacity: 0;
-}
-
 section{
     background-position: center;
     background-repeat: no-repeat;
