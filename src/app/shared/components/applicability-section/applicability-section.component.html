@@ -1,4 +1,8 @@
-<section class='carousel-section' [style.backgroundImage]="'url(' + carouselItems[activeSlide]?.bgUrl + ')'">
+<section 
+  class='carousel-section'
+  [style.backgroundImage]="'url(' + carouselItems[activeSlide]?.bgUrl + ')'"
+>
+<p>{{animationFlag}}</p>
   <div class="menu-slider">
     <div  
       *ngFor="let menuItem of groups; let i = index" 

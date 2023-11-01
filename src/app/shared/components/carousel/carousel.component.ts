@@ -102,7 +102,7 @@ export class CarouselComponent extends Component implements OnInit, OnDestroy {
     this._autoPlayDelay = 3000;
     this._autoPlay();
   }
-  ngOnDestroy() {
+  public ngOnDestroy(): void {
     if (this._autoPlayInterval) {
       clearInterval(this._autoPlayInterval);
     }
